@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 226.8 232.4" style="enable-background:new 0 0 226.8 232.4;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{font-family:'ArialMT';}
+	.st2{font-size:14px;}
+	.st3{fill:#FF0000;}
+	.st4{fill:#0000FF;}
+	.st5{fill:#00FF00;}
+	.st6{fill:#FFFF00;}
+	.st7{fill:#00FFFF;}
+	.st8{fill:#FF00FF;}
+	.st9{fill:#FF7F00;}
+	.st10{fill:#5000FF;}
+	.st11{fill:#007FFF;}
+</style>
+<text transform="matrix(1 0 0 1 34.5297 17.9295)" class="st0 st1 st2">Tirer</text>
+<text transform="matrix(1 0 0 1 34.5298 94.465)" class="st0 st1 st2">Déplacement</text>
+<text transform="matrix(1 0 0 1 34.5298 43.4412)" class="st0 st1 st2">Viser</text>
+<text transform="matrix(1 0 0 1 34.5297 68.9532)" class="st0 st1 st2">Changer d’arme</text>
+<text transform="matrix(1 0 0 1 34.5298 119.977)" class="st0 st1 st2">S’accroupir/S’allonger</text>
+<text transform="matrix(1 0 0 1 34.5298 145.4883)" class="st0 st1 st2">Sauter</text>
+<text transform="matrix(1 0 0 1 34.5298 171.0002)" class="st0 st1 st2">Dash</text>
+<text transform="matrix(1 0 0 1 34.5298 196.5118)" class="st0 st1 st2">Capacité principale</text>
+<text transform="matrix(1 0 0 1 34.5299 222.0238)" class="st0 st1 st2">Capacité secondaire</text>
+<circle class="st3" cx="14.2" cy="14.2" r="11.3"/>
+<circle class="st4" cx="14.2" cy="39.7" r="11.3"/>
+<circle class="st5" cx="14.2" cy="65.2" r="11.3"/>
+<circle class="st6" cx="14.2" cy="90.8" r="11.3"/>
+<circle class="st7" cx="14.2" cy="116.3" r="11.3"/>
+<circle class="st8" cx="14.2" cy="141.8" r="11.3"/>
+<circle class="st9" cx="14.2" cy="167.3" r="11.3"/>
+<circle class="st10" cx="14.2" cy="192.8" r="11.3"/>
+<circle class="st11" cx="14.2" cy="218.3" r="11.3"/>
+</svg>
