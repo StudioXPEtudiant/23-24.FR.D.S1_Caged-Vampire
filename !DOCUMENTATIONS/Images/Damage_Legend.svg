@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
+<g>
+	<g>
+		<circle fill="#00FF00" cx="12.4" cy="15" r="10"/>
+		<text transform="matrix(1 0 0 1 27.3633 19.1091)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="14px">Normale</text>
+	</g>
+	<g>
+		<circle fill="#FF8000" cx="12.4" cy="40" r="10"/>
+		<text transform="matrix(1 0 0 1 27.3632 44.1093)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="14px">Moyen</text>
+	</g>
+	<g>
+		<circle fill="#FF0000" cx="12.4" cy="65" r="10"/>
+		<text transform="matrix(1 0 0 1 27.3632 69.1093)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="14px">Critique</text>
+	</g>
+</g>
+</svg>
