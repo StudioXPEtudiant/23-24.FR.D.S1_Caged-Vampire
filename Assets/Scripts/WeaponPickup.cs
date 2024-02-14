@@ -48,7 +48,7 @@ public class WeaponPickup : MonoBehaviour
         else
         {
             // If picked up, move the weapon to the pickup position
-            transform.position = player.transform.position;
+            transform.position = player.transform.position + new Vector3 (1,-0.1f,0);
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
