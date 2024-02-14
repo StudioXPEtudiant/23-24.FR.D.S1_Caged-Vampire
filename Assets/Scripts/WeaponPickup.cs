@@ -10,6 +10,8 @@ public class WeaponPickup : MonoBehaviour
 
     private bool isPickedUp = false; // Flag to indicate if the weapon is picked up
 
+    private Vector3 pickupPosition; // The position where the weapon will go when picked up
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -45,8 +47,14 @@ public class WeaponPickup : MonoBehaviour
         }
         else
         {
-            // If picked up, follow the player
-            transform.position = player.transform.position + new Vector3 (1,-0.1f,0);
+            // If picked up, move the weapon to the pickup position
+            transform.position = player.transform.position;
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                // If Q key is pressed, drop the weapon on the ground
+                Drop();
+            }
         }
     }
 
@@ -69,10 +77,28 @@ public class WeaponPickup : MonoBehaviour
     private void PickUp()
     {
         isPickedUp = true;
+        // Disable the highlight when the weapon is picked up
+        HighlightWeapon(false);
         // Optionally, you may want to disable the collider of the weapon so it doesn't interfere with the player's movement
         GetComponent<Collider2D>().enabled = false;
+
+        // Set the pickup position to the current player position
+        pickupPosition = player.transform.position + new Vector3 (1,-0.1f,0);
+    }
+
+    private void Drop()
+    {
+        isPickedUp = false;
+        // Re-enable the collider of the weapon
+        GetComponent<Collider2D>().enabled = true;
+
+        // Optionally, you may want to add some offset so the weapon doesn't collide with the player
+        transform.position = player.transform.position + Vector3.right; // Drop the weapon slightly above the player
+
+        // Re-enable the highlight if the player is in range
+        if (isInRange)
+        {
+            HighlightWeapon(true);
+        }
     }
 }
-
-
-
