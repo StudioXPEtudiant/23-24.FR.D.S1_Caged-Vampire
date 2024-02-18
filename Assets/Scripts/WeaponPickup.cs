@@ -2,81 +2,103 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    public float pickupRange = 2f; // Adjust as needed for your game
-    public KeyCode pickupKey = KeyCode.E; // Key to pick up the weapon
-    private GameObject highlightedWeapon; // Reference to the highlighted weapon
+    public float pickupDistance = 3f; // Distance at which the pickup is activated
+    public Color highlightColor = Color.yellow; // Color to highlight the weapon
+    private GameObject player; // Reference to the player object
+    private bool isInRange = false; // Flag to indicate if the player is in range
+    private bool isHighlighted = false; // Flag to indicate if the weapon is highlighted
 
-    void Update()
+    private bool isPickedUp = false; // Flag to indicate if the weapon is picked up
+
+    private Vector3 pickupPosition; // The position where the weapon will go when picked up
+
+    private void Start()
     {
-        // Check if the player presses the pickup key
-        if (Input.GetKeyDown(pickupKey) && highlightedWeapon != null)
-        {
-            // Perform pickup action
-            PickUpWeapon(highlightedWeapon);
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
-        // Raycast to detect nearby weapons
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, pickupRange))
+    private void Update()
+    {
+        if (!isPickedUp)
         {
-            GameObject hitObject = hit.collider.gameObject;
-            // Check if the detected object has the "Weapon" tag
-            if (hitObject.CompareTag("Weapon"))
+            if (player == null) // Ensure player reference is valid
+                return;
+
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+            if (distanceToPlayer <= pickupDistance && !isInRange)
             {
-                // Highlight the weapon
-                HighlightWeapon(hitObject);
-                highlightedWeapon = hitObject;
+                // Player is within pickup distance
+                isInRange = true;
+                HighlightWeapon(true);
             }
-            else
+            else if (distanceToPlayer > pickupDistance && isInRange)
             {
-                // If the detected object is not a weapon, remove highlight
-                RemoveHighlight();
-                highlightedWeapon = null;
+                // Player is out of pickup distance
+                isInRange = false;
+                HighlightWeapon(false);
+            }
+
+            if (isHighlighted && isInRange && Input.GetKeyDown(KeyCode.E))
+            {
+                // If the weapon is highlighted and player is in range and E key is pressed, pick up the weapon
+                PickUp();
             }
         }
         else
         {
-            // If no object is detected, remove highlight
-            RemoveHighlight();
-            highlightedWeapon = null;
-        }
-    }
+            // If picked up, move the weapon to the pickup position
+            transform.position = player.transform.position + new Vector3 (1,-0.1f,0);
 
-    void HighlightWeapon(GameObject weapon)
-    {
-        // Add your highlighting effect here, for example changing color or adding glow
-        Renderer renderer = weapon.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            // Example: Change material color to yellow
-            renderer.material.color = Color.yellow;
-        }
-    }
-
-    void RemoveHighlight()
-    {
-        // Reset highlighted weapon to its original state
-        if (highlightedWeapon != null)
-        {
-            Renderer renderer = highlightedWeapon.GetComponent<Renderer>();
-            if (renderer != null)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                // Example: Reset material color
-                renderer.material.color = Color.white;
+                // If Q key is pressed, drop the weapon on the ground
+                Drop();
             }
         }
     }
 
-    void PickUpWeapon(GameObject weapon)
+    private void HighlightWeapon(bool highlight)
     {
-        // Add your pickup logic here, for example adding the weapon to player's inventory
-        Debug.Log("Picked up: " + weapon.name);
-        // Example: Destroy the weapon object
-        Destroy(weapon);
-    
+        if (highlight)
+        {
+            // Optionally, you can change the color of the weapon sprite to indicate it's highlighted
+            GetComponent<SpriteRenderer>().color = highlightColor;
+            isHighlighted = true;
+        }
+        else
+        {
+            // Optionally, you can revert the color of the weapon sprite to its original color
+            GetComponent<SpriteRenderer>().color = Color.white;
+            isHighlighted = false;
+        }
     }
-   
 
+    private void PickUp()
+    {
+        isPickedUp = true;
+        // Disable the highlight when the weapon is picked up
+        HighlightWeapon(false);
+        // Optionally, you may want to disable the collider of the weapon so it doesn't interfere with the player's movement
+        GetComponent<Collider2D>().enabled = false;
+
+        // Set the pickup position to the current player position
+        pickupPosition = player.transform.position + new Vector3 (1,-0.1f,0);
+    }
+
+    private void Drop()
+    {
+        isPickedUp = false;
+        // Re-enable the collider of the weapon
+        GetComponent<Collider2D>().enabled = true;
+
+        // Optionally, you may want to add some offset so the weapon doesn't collide with the player
+        transform.position = player.transform.position + Vector3.right; // Drop the weapon slightly above the player
+
+        // Re-enable the highlight if the player is in range
+        if (isInRange)
+        {
+            HighlightWeapon(true);
+        }
+    }
 }
-
-
