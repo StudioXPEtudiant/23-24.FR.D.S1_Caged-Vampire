@@ -1,39 +1,42 @@
-
-
-
 using UnityEngine;
 
 public class DamageScript : MonoBehaviour
 {
     public int damageAmount = 1; // the amount of damage this script will do
-    public string WeakPointTag = "Weakpoint"; // the tag of the weak point hitbox
+    public string playerTag = "Player"; // the tag of the player GameObject
+    public float attackCooldown = 1f; // cooldown time between attacks
+    private bool isOnCooldown = false; // flag to track if the sword is on cooldown
+    private float cooldownTimer = 0f; // timer to keep track of cooldown
 
-    // this method will be called when this object collides with another object
-
-    private void OnTriggerEnter2D(Collider2D other)
+    // Update is called once per frame
+    void Update()
     {
-        HealthScript? healthScript = other.GetComponentInParent<HealthScript?>();
-
-        if (healthScript != null)
+        // Update cooldown timer if the sword is on cooldown
+        if (isOnCooldown)
         {
-
-            // check if the object we collided with has a hitbox with the specified tag
-            if (other.CompareTag("Weakpoint"))
+            cooldownTimer += Time.deltaTime;
+            if (cooldownTimer >= attackCooldown)
             {
-                // if the object has a hitbox with the specified tag, apply double damage to it
-                healthScript.TakeDamage(damageAmount * 2);
-
-            }
-            else
-            {
-                // if the object does not have a hitbox with the specified tag, apply normal damage to it
-                healthScript.TakeDamage(damageAmount * 1);
-
+                isOnCooldown = false;
+                cooldownTimer = 0f;
             }
         }
-        else
-        {
+    }
 
+    // this method will be called when this object collides with another object
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isOnCooldown && Input.GetMouseButtonDown(0)) // Check if left mouse button is pressed and sword is not on cooldown
+        {
+            if (other.CompareTag(playerTag)) // Check if collided object has the Player tag
+            {
+                HealthScript healthScript = other.GetComponent<HealthScript>();
+                if (healthScript != null)
+                {
+                    healthScript.TakeDamageFromSword(damageAmount); // Apply damage to the player with the sword
+                    isOnCooldown = true; // Put the sword on cooldown
+                }
+            }
         }
     }
 }

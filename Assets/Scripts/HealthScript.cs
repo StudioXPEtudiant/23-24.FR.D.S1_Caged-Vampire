@@ -11,10 +11,10 @@ public class HealthScript : MonoBehaviour
     public float invulnerabilityTime = 1.5f; // the amount of time the object is invulnerable after taking damage
     internal Action OnDeath;
 
-
     public List<string> ignoredTags = new List<string>();
-    // this method will be called when this object takes damage
-    public void TakeDamage(int damageAmount)
+
+    // this method will be called when this object takes damage from the sword
+    public void TakeDamageFromSword(int damageAmount)
     {
         if (isInvulnerable)
         {
@@ -22,15 +22,14 @@ public class HealthScript : MonoBehaviour
             return;
         }
         currentHealth -= damageAmount; // subtract the damage from the current health
-        Debug.Log("il te reste" + currentHealth + "point de vie");
-        if (currentHealth <= 0f)
+        Debug.Log("il te reste " + currentHealth + " point de vie");
+        if (currentHealth <= 0)
         {
             Die();  // if the health reaches zero or below, call the Die method
         }
 
         isInvulnerable = true;
         invulnerabilityTimer = 0.0f;
-
     }
 
     // this method will be called when this object dies
@@ -58,6 +57,7 @@ public class HealthScript : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         // Check if the colliding GameObject has any of the ignored tags
