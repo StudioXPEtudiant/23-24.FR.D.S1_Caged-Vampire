@@ -60,5 +60,3 @@ public class PassiveAIWalk : MonoBehaviour
         return false;
     }
 }
-
-    
