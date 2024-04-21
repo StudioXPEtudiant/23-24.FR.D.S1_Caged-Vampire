@@ -131,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
         // Determine the dash direction based on the player's horizontal input
         var dashDirection = Input.GetAxis("Horizontal");
         StartCoroutine(PerformDash(dashDirection));
+        _animator.SetTrigger("Dashing");
     }
 
     private IEnumerator PerformDash(float dashDirection)
