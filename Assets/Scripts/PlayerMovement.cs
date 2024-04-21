@@ -108,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0f);
         _rigidbody2D.AddForce(new Vector2(0f, jumpForceToApply), ForceMode2D.Impulse);
+        _animator.SetTrigger("Jumping");
     }
 
     private void Crouch()
