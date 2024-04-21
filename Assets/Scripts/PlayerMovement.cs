@@ -31,12 +31,17 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private CameraManager _camera;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _camera = GameObject.FindGameObjectWithTag("CameraManager").GetComponent<CameraManager>();
+        _animator = GetComponent<Animator>(); 
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
 
     private void Update()
     {
@@ -48,8 +53,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W)) Jump();
         if (Input.GetKeyDown(KeyCode.S)) Crouch();
 
-
-        var movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        var merguezfumante = Input.GetAxis("Horizontal");
+        Vector3 movement = new Vector3(merguezfumante , 0f, 0f);
+        _animator.SetFloat("Move", merguezfumante);
         if (_isCrouching)
         {
             _camera.ChangeFieldView(crouchCameraDistance, 2f);
@@ -62,6 +68,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position += movement * Time.deltaTime;
+        if (merguezfumante < 0f)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else
+        {
+            _spriteRenderer.flipX = true;
+        }
     }
 
     private void FixedUpdate()
