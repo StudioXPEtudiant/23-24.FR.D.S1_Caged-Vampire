@@ -31,12 +31,17 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private CameraManager _camera;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _camera = GameObject.FindGameObjectWithTag("CameraManager").GetComponent<CameraManager>();
+        _animator = GetComponent<Animator>(); 
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
 
     private void Update()
     {
@@ -48,8 +53,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W)) Jump();
         if (Input.GetKeyDown(KeyCode.S)) Crouch();
 
-
-        var movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        var merguezfumante = Input.GetAxis("Horizontal");
+        Vector3 movement = new Vector3(merguezfumante , 0f, 0f);
+        _animator.SetFloat("Move", merguezfumante);
         if (_isCrouching)
         {
             _camera.ChangeFieldView(crouchCameraDistance, 2f);
@@ -62,6 +68,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position += movement * Time.deltaTime;
+        if (merguezfumante < 0f)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else
+        {
+            _spriteRenderer.flipX = true;
+        }
     }
 
     private void FixedUpdate()
@@ -94,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0f);
         _rigidbody2D.AddForce(new Vector2(0f, jumpForceToApply), ForceMode2D.Impulse);
+        _animator.SetTrigger("Jumping");
     }
 
     private void Crouch()
@@ -117,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         // Determine the dash direction based on the player's horizontal input
         var dashDirection = Input.GetAxis("Horizontal");
         StartCoroutine(PerformDash(dashDirection));
+        _animator.SetTrigger("Dashing");
     }
 
     private IEnumerator PerformDash(float dashDirection)
