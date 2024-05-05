@@ -114,8 +114,16 @@ public class PlayerMovement : MonoBehaviour
     private void Crouch()
     {
         _isCrouching = !_isCrouching;
-        transform.localScale = _isCrouching ? new Vector3(1f, 0.5f, 1f) : Vector3.one;
+        if ( _isCrouching )
+        {
+            _animator.SetBool("Crouching",true);
+        }
+        else
+        {
+            _animator.SetBool("Crouching", false);
+        }
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
