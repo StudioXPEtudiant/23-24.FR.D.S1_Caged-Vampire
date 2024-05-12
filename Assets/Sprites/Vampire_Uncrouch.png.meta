@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0e9f1b23d9c7ecd4c8bd668b16814c09
+guid: fdc7a519d7d90bb46a1477ca7eed01ef
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Vampire_Crouch_0
+      name: Vampire_Uncrouch_0
       rect:
         serializedVersion: 2
-        x: 9
+        x: 3
         y: 0
-        width: 49
-        height: 63
+        width: 52
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7518cabdd65f490408e362dc13f14077
-      internalID: 1506984135
+      spriteID: 8f6442e0cf93d5547b5b2540ac967360
+      internalID: 2135218701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vampire_Crouch_1
+      name: Vampire_Uncrouch_1
       rect:
         serializedVersion: 2
-        x: 73
+        x: 67
         y: 0
-        width: 47
-        height: 58
+        width: 52
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7206cb62ebe1ce478b11c2e184d989b
-      internalID: 1607202966
+      spriteID: 6b398ad815be82f449b1e0dd67e7a439
+      internalID: 414278333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vampire_Crouch_2
+      name: Vampire_Uncrouch_2
       rect:
         serializedVersion: 2
         x: 131
@@ -185,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ed83df8c7613174aacc72fbc8ddd89f
-      internalID: 523230744
+      spriteID: ed620ee7309149a4aa01ca0e94d7134e
+      internalID: -1563909530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vampire_Crouch_3
+      name: Vampire_Uncrouch_3
       rect:
         serializedVersion: 2
-        x: 195
+        x: 201
         y: 0
-        width: 52
-        height: 45
+        width: 54
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 801e6dd407f356e42b4634da97c19ca6
-      internalID: 1438768507
+      spriteID: 4d3af1c779b093844bf3084bbfcc1c56
+      internalID: 432824156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vampire_Crouch_4
+      name: Vampire_Uncrouch_4
       rect:
         serializedVersion: 2
-        x: 259
+        x: 265
         y: 0
-        width: 52
-        height: 43
+        width: 47
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,8 +227,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 047602ee92a1ffd4ebf975c912afe891
-      internalID: 92872910
+      spriteID: aa26604743af44e4bbbdb084148d67e4
+      internalID: 1499716896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vampire_Uncrouch_5
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 0
+        width: 49
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f2cedf760ccbc4e9e8d821a9dc6844
+      internalID: 1569664775
       vertices: []
       indices: 
       edges: []
@@ -244,11 +265,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Vampire_Crouch_0: 1506984135
-      Vampire_Crouch_1: 1607202966
-      Vampire_Crouch_2: 523230744
-      Vampire_Crouch_3: 1438768507
-      Vampire_Crouch_4: 92872910
+      Vampire_Uncrouch_0: 2135218701
+      Vampire_Uncrouch_1: 414278333
+      Vampire_Uncrouch_2: -1563909530
+      Vampire_Uncrouch_3: 432824156
+      Vampire_Uncrouch_4: 1499716896
+      Vampire_Uncrouch_5: 1569664775
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

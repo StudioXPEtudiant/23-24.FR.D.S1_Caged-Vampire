@@ -116,11 +116,20 @@ public class PlayerMovement : MonoBehaviour
     private void Crouch()
     {
         _isCrouching = !_isCrouching;
-        if (!_isCrouching)
+        if ( _isCrouching )
         {
-            _animator.SetTrigger("Uncrouching");
+            _animator.SetBool("Crouching",true);
         }
         else
+        {
+            _animator.SetBool("Crouching", false);
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
         {
             _animator.SetTrigger("Crouching");
         }
