@@ -47,7 +47,8 @@ public class WeaponController : MonoBehaviour
             HealthScript healthScript = other.GetComponent<HealthScript>();
             if (healthScript != null)
             {
-                healthScript.TakeDamageFromSword(damageAmount); // Apply damage to the player
+                healthScript.TakeDamageFromSword
+                    (damageAmount); // Apply damage to the player
             }
         }
     }

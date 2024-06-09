@@ -18,19 +18,23 @@ public class HealthScript : MonoBehaviour
     {
         if (isInvulnerable)
         {
-            // if the object is currently invulnerable, do nothing
-            return;
-        }
-        currentHealth -= damageAmount; // subtract the damage from the current health
-        Debug.Log("il te reste " + currentHealth + " point de vie");
-        if (currentHealth <= 0)
-        {
-            Die();  // if the health reaches zero or below, call the Die method
+            return; // Exit early if the enemy is invulnerable
         }
 
-        isInvulnerable = true;
-        invulnerabilityTimer = 0.0f;
+        currentHealth -= damageAmount;
+
+        if (currentHealth <= 0)
+        {
+            Die(); // Perform death actions if health reaches zero or below
+        }
+
+        // Optionally, apply visual or audio feedback for taking damage
+
+        isInvulnerable = true; // Set invulnerability state (if applicable)
+        invulnerabilityTimer = 0.0f; // Reset invulnerability timer (if applicable)
     }
+
+
 
     // this method will be called when this object dies
     private void Die()
