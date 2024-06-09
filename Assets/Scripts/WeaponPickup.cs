@@ -4,10 +4,10 @@ public class WeaponPickup : MonoBehaviour
 {
     public float pickupDistance = 3f;
     public Color highlightColor = Color.yellow;
-
     private GameObject player;
     private bool isInRange = false;
-    private bool isPickedUp = false;
+    public bool isPickedUp = false;
+    private Item item; // The item associated with this pickup
 
     private Vector3 originalLocalPosition; // Store the original local position relative to the player
 
@@ -61,10 +61,14 @@ public class WeaponPickup : MonoBehaviour
 
     private void HighlightWeapon(bool highlight)
     {
-        GetComponent<SpriteRenderer>().color = highlight ? highlightColor : Color.white;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        if (renderer != null)
+        {
+            renderer.color = highlight ? highlightColor : Color.white;
+        }
     }
 
-    private void PickUp()
+    public void PickUp()
     {
         isPickedUp = true;
         HighlightWeapon(false);
@@ -78,14 +82,18 @@ public class WeaponPickup : MonoBehaviour
         }
     }
 
-    private void Drop()
+    public void Drop()
     {
         isPickedUp = false;
         GetComponent<Collider2D>().enabled = true;
+        HighlightWeapon(true);
+    }
 
-        if (isInRange)
-        {
-            HighlightWeapon(true);
-        }
+    // Method to set the item details
+    public void SetItem(Item newItem)
+    {
+        item = newItem;
+        // Update the item's attributes as needed, such as sprite, name, etc.
+        Debug.Log("Item set: " + item.itemName);
     }
 }
